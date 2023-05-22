@@ -21,5 +21,25 @@ module.exports = {
                 error: error.name
             });
         }
+    },
+
+    async update(req,res) {
+        try {
+            const response = await bookingService.update(req.params.id,req.body);
+            return res.status(StatusCodes.OK).json({
+                data: response,
+                success: true,
+                message: 'Successfully updated the tickets',
+                error: {}
+            });
+        } catch (error) {
+            return res.status(error.statusCode).json({
+                data: {},
+                success: false,
+                message: error.explaination,
+                error: error.name
+            });
+        }
     }
+
 };
