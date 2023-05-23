@@ -34,7 +34,7 @@ class BookingRepository {
             for(let [key,value] of Object.entries(data)) {
                 booking[key] = value;
             }
-            booking.save();
+            await booking.save();
             return booking;
         } catch (error) {
             if(error.name == 'SequelizeValidationError') {
